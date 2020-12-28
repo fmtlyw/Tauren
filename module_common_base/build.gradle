@@ -54,4 +54,6 @@ dependencies {
     api rootProject.ext.androidx["androidx.lifecycle-viewmodel"]
     //liveData
     api rootProject.ext.androidx["androidx.lifecycle-livedata"]
+    //constraintlayout
+    api rootProject.ext.androidx["androidx.constraintlayout"]
 }
