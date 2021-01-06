@@ -65,6 +65,9 @@ ext {
             "junit"                               : "junit:junit:4.13.1",
             "androidx.test.ext-junit"             : "androidx.test.ext:junit:1.1.2",
             "androidx.test.espresso:espresso-core": "androidx.test.espresso:espresso-core:3.3.0",
+            //navigation
+            "navigation-fragment"                 : "androidx.navigation:navigation-fragment-ktx:2.3.1",
+            "navigation-ui"                 : "androidx.navigation:navigation-ui-ktx:2.3.1",
     ]
 
     dependencies = [
@@ -89,5 +92,10 @@ ext {
             "tencent-mmkv"                 : "com.tencent:mmkv:${versions["mmkvVersion"]}",
             //分包
             "multidex"                     : "com.android.support:multidex:${versions["multidexVersion"]}",
+            //底部bottomBar
+            "BottomNavigationViewEx"       : "com.github.ittianyu:BottomNavigationViewEx:2.0.4",
+            "viewpager2"                   : "androidx.viewpager2:viewpager2:1.0.0",
+            //util
+            "utilcodex"                    : "com.blankj:utilcodex:1.26.0",
     ]
 }

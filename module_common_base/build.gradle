@@ -56,4 +56,13 @@ dependencies {
     api rootProject.ext.androidx["androidx.lifecycle-livedata"]
     //constraintlayout
     api rootProject.ext.androidx["androidx.constraintlayout"]
+    //底部bottomBar
+    api rootProject.ext.dependencies["BottomNavigationViewEx"]
+    //navigation
+    api rootProject.ext.androidx["navigation-fragment"]
+    api rootProject.ext.androidx["navigation-ui"]
+    //viewpager2
+    api rootProject.ext.dependencies["viewpager2"]
+    //utilcodex
+    api rootProject.ext.dependencies["utilcodex"]
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_main"
+        android:checked="true"
+        android:icon="@mipmap/menu_main"
+        android:title="@string/menu_home" />
+    <item
+        android:id="@+id/menu_project"
+        android:icon="@mipmap/menu_project"
+        android:title="@string/menu_project" />
+
+    <item
+        android:id="@+id/menu_system"
+        android:icon="@mipmap/menu_tree"
+        android:title="@string/menu_tree" />
+    <item
+        android:id="@+id/menu_public"
+        android:icon="@mipmap/menu_public"
+        android:title="@string/menu_public" />
+    <item
+        android:id="@+id/menu_me"
+        android:icon="@mipmap/menu_me"
+        android:title="@string/menu_me" />
+
+</menu>

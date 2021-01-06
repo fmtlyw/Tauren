@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.lyw.tauren.ui.fragment.MainFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_mainfragment_to_collectfragment"
+            app:destination="@id/collectFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_searchfragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectFragment"
+        android:name="com.lyw.tauren.ui.fragment.collect.CollectFragment"
+        android:label="CollectFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.lyw.tauren.ui.fragment.search.SearchFragment"
+        android:label="SearchFragment" />
+</navigation>
