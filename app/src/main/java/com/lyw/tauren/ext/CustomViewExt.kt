@@ -4,6 +4,7 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -144,14 +145,14 @@ import com.lyw.tauren.ui.fragment.tree.TreeArrFragment
 //    }
 //}
 //
-///**
-// * 初始化普通的toolbar 只设置标题
-// */
-//fun Toolbar.init(titleStr: String = ""): Toolbar {
-//    setBackgroundColor(SettingUtil.getColor(appContext))
-//    title = titleStr
-//    return this
-//}
+/**
+ * 初始化普通的toolbar 只设置标题
+ */
+fun Toolbar.init(titleStr: String = ""): Toolbar {
+    setBackgroundColor(SettingUtil.getColor(appContext))
+    title = titleStr
+    return this
+}
 //
 ///**
 // * 初始化有返回键的toolbar

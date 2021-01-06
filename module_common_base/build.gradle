@@ -65,4 +65,6 @@ dependencies {
     api rootProject.ext.dependencies["viewpager2"]
     //utilcodex
     api rootProject.ext.dependencies["utilcodex"]
+    //recyclerview
+    api rootProject.ext.dependencies["recyclerview"]
 }
