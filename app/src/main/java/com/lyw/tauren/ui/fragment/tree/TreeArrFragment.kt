@@ -19,4 +19,6 @@ class TreeArrFragment : BaseFragment<TreeArrViewModel,FragmentTreeArrBinding>(){
 
     override fun createObserver() {
     }
+    override fun lazyLoadData() {
+    }
 }

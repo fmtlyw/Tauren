@@ -9,7 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+import com.kingja.loadsir.core.LoadService
+import com.kingja.loadsir.core.LoadSir
 import com.lyw.module_common_base.BaseApp.Companion.appContext
+import com.lyw.module_common_base.callback.loadCallBack.EmptyCallback
+import com.lyw.module_common_base.callback.loadCallBack.LoadingCallback
 import com.lyw.module_common_base.ext.SettingUtil
 import com.lyw.tauren.ui.fragment.home.HomeFragment
 import com.lyw.tauren.ui.fragment.me.MeFragment
@@ -41,30 +45,30 @@ import com.lyw.tauren.ui.fragment.tree.TreeArrFragment
 //    this.setErrorText(message)
 //    this.showCallback(ErrorCallback::class.java)
 //}
-//
-///**
-// * 设置空布局
-// */
-//fun LoadService<*>.showEmpty() {
-//    this.showCallback(EmptyCallback::class.java)
-//}
-//
-///**
-// * 设置加载中
-// */
-//fun LoadService<*>.showLoading() {
-//    this.showCallback(LoadingCallback::class.java)
-//}
-//
-//fun loadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
-//    val loadsir = LoadSir.getDefault().register(view) {
-//        //点击重试时触发的操作
-//        callback.invoke()
-//    }
-//    loadsir.showSuccess()
-//    SettingUtil.setLoadingColor(SettingUtil.getColor(appContext), loadsir)
-//    return loadsir
-//}
+
+/**
+ * 设置空布局
+ */
+fun LoadService<*>.showEmpty() {
+    this.showCallback(EmptyCallback::class.java)
+}
+
+/**
+ * 设置加载中
+ */
+fun LoadService<*>.showLoading() {
+    this.showCallback(LoadingCallback::class.java)
+}
+
+fun loadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
+    val loadsir = LoadSir.getDefault().register(view) {
+        //点击重试时触发的操作
+        callback.invoke()
+    }
+    loadsir.showSuccess()
+    SettingUtil.setLoadingColor(SettingUtil.getColor(appContext), loadsir)
+    return loadsir
+}
 //
 ////绑定普通的Recyclerview
 //fun RecyclerView.init(

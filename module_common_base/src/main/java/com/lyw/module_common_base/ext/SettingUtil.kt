@@ -7,12 +7,15 @@ import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
+import android.preference.PreferenceActivity
 import android.preference.PreferenceManager
 import android.view.View
 import android.widget.ProgressBar
 import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.Utils
+import com.kingja.loadsir.core.LoadService
 import com.lyw.module_common_base.R
+import com.lyw.module_common_base.callback.loadCallBack.LoadingCallback
 
 import com.tencent.mmkv.MMKV
 
@@ -171,14 +174,14 @@ object SettingUtil {
     /**
      * 设置loading的颜色 加载布局
      */
-//    fun setLoadingColor(color:Int,loadsir: LoadService<Any>) {
-//        loadsir.setCallBack(LoadingCallback::class.java) { _, view ->
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                view.findViewById<ProgressBar>(R.id.loading_progress).indeterminateTintMode = PorterDuff.Mode.SRC_ATOP
-//                view.findViewById<ProgressBar>(R.id.loading_progress).indeterminateTintList = getOneColorStateList(color)
-//            }
-//        }
-//    }
+    fun setLoadingColor(color:Int,loadsir: LoadService<Any>) {
+        loadsir.setCallBack(LoadingCallback::class.java) { _, view ->
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                view.findViewById<ProgressBar>(R.id.loading_progress).indeterminateTintMode = PorterDuff.Mode.SRC_ATOP
+                view.findViewById<ProgressBar>(R.id.loading_progress).indeterminateTintList = getOneColorStateList(color)
+            }
+        }
+    }
 
 
 }

@@ -39,4 +39,7 @@ class MainFragment :BaseFragment<MainViewModel,FragmentMainBinding>(){
 
     override fun createObserver() {
     }
+
+    override fun lazyLoadData() {
+    }
 }

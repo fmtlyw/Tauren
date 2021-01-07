@@ -19,4 +19,6 @@ class SearchFragment :BaseFragment<SearchViewModel,FragmentSearchBinding>(){
 
     override fun createObserver() {
     }
+    override fun lazyLoadData() {
+    }
 }

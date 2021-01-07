@@ -19,4 +19,6 @@ class ProjectFragment :BaseFragment<ProjectViewModel,FragmentProjectBinding>(){
 
     override fun createObserver() {
     }
+    override fun lazyLoadData() {
+    }
 }

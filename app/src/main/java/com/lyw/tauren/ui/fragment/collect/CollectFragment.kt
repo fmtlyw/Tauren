@@ -19,4 +19,7 @@ class CollectFragment : BaseFragment<CollectViewModel,FragmentCollectBinding>(){
 
     override fun createObserver() {
     }
+
+    override fun lazyLoadData() {
+    }
 }

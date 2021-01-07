@@ -18,4 +18,6 @@ class MeFragment : BaseFragment<MeViewModel,FragmentMeBinding>(){
 
     override fun createObserver() {
     }
+    override fun lazyLoadData() {
+    }
 }

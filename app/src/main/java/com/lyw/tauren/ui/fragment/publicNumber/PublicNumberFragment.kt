@@ -19,4 +19,6 @@ class PublicNumberFragment :BaseFragment<PublicNumberViewModel,FragmentPublicNum
 
     override fun createObserver() {
     }
+    override fun lazyLoadData() {
+    }
 }

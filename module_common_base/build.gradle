@@ -67,4 +67,6 @@ dependencies {
     api rootProject.ext.dependencies["utilcodex"]
     //recyclerview
     api rootProject.ext.dependencies["recyclerview"]
+    //loadsir
+    api rootProject.ext.dependencies["loadsir"]
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import com.lyw.module_common_base.ext.getVmClazz
 import com.lyw.module_common_base.view.viewmodel.BaseViewModel
@@ -17,11 +18,13 @@ import com.lyw.module_common_base.view.viewmodel.BaseViewModel
  * @author lyw
  */
 abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
+    //是否第一次加载
+    private var isFirst: Boolean = true
     lateinit var mViewModel: VM
 
     lateinit var mActivity: AppCompatActivity
 
-    abstract  fun layoutId() : Int
+    abstract fun layoutId(): Int
 
 
     override fun onCreateView(
@@ -29,7 +32,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(layoutId(),container,false)
+        return inflater.inflate(layoutId(), container, false)
     }
 
 
@@ -41,6 +44,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = createViewModel()
+        isFirst = true
         initView(savedInstanceState)
         createObserver()
         initData()
@@ -49,7 +53,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     /**
      * 创建viewModel
      */
-    private fun createViewModel() : VM{
+    private fun createViewModel(): VM {
         return ViewModelProvider(this).get(getVmClazz(this))
     }
 
@@ -67,4 +71,29 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      * Fragment执行onCreate后触发的方法
      */
     open fun initData() {}
+
+
+    override fun onResume() {
+        super.onResume()
+        onVisible()
+    }
+
+    /**
+     * 是否需要懒加载
+     */
+    private fun onVisible() {
+        if (lifecycle.currentState == Lifecycle.State.STARTED && isFirst) {
+//等待view加载后触发懒加载
+            view?.post {
+                lazyLoadData()
+
+
+            }
+        }
+    }
+
+    /**
+     * 懒加载
+     */
+    abstract fun lazyLoadData()
 }

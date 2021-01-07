@@ -5,6 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
+import com.kingja.loadsir.callback.SuccessCallback
+import com.kingja.loadsir.core.LoadSir
+import com.lyw.module_common_base.callback.loadCallBack.EmptyCallback
+import com.lyw.module_common_base.callback.loadCallBack.ErrorCallback
+import com.lyw.module_common_base.callback.loadCallBack.LoadingCallback
 import com.tencent.mmkv.MMKV
 
 /**
@@ -31,6 +36,14 @@ open class BaseApp : Application(), ViewModelStoreOwner {
 
         //分包
         MultiDex.install(this)
+
+        //界面加载管理 初始化
+        LoadSir.beginBuilder()
+            .addCallback(LoadingCallback())//加载
+            .addCallback(ErrorCallback())//错误
+            .addCallback(EmptyCallback())//空
+            .setDefaultCallback(SuccessCallback::class.java)//设置默认加载状态页
+            .commit()
     }
 
     override fun getViewModelStore(): ViewModelStore {
