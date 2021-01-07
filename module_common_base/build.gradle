@@ -69,4 +69,14 @@ dependencies {
     api rootProject.ext.dependencies["recyclerview"]
     //loadsir
     api rootProject.ext.dependencies["loadsir"]
+    //BaseRecyclerViewAdapterHelper
+    api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+    //RevealLayout
+    api rootProject.ext.dependencies["RevealLayout"]
+    //retrofit2
+    api rootProject.ext.dependencies["retrofit2"]
+    //converter-gson
+    api rootProject.ext.dependencies["converter-gson"]
+    //glide
+    api rootProject.ext.dependencies["glide"]
 }
