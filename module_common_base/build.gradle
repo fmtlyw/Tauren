@@ -79,4 +79,10 @@ dependencies {
     api rootProject.ext.dependencies["converter-gson"]
     //glide
     api rootProject.ext.dependencies["glide"]
+    //unpeek-livedata
+    api rootProject.ext.dependencies["unpeek-livedata"]
+    //retrofit-url-manager
+    api rootProject.ext.dependencies["retrofit-url-manager"]
+    //BannerViewPager
+    api rootProject.ext.dependencies["BannerViewPager"]
 }

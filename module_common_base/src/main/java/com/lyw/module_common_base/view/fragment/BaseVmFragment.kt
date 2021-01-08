@@ -67,6 +67,10 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      */
     abstract fun createObserver()
 
+    abstract fun showLoading(message: String = "请求网络中...")
+
+    abstract fun dismissLoading()
+
     /**
      * Fragment执行onCreate后触发的方法
      */

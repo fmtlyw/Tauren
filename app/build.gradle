@@ -30,6 +30,16 @@ android {
     androidExtensions {
         experimental = true
     }
+
+    //要加，不然使用okhttp会报异常
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {

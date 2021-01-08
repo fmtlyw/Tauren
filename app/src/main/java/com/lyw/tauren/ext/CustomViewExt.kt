@@ -5,6 +5,7 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,8 +20,11 @@ import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.lyw.module_common_base.BaseApp.Companion.appContext
 import com.lyw.module_common_base.callback.loadCallBack.EmptyCallback
+import com.lyw.module_common_base.callback.loadCallBack.ErrorCallback
 import com.lyw.module_common_base.callback.loadCallBack.LoadingCallback
 import com.lyw.module_common_base.ext.SettingUtil
+import com.lyw.tauren.R
+import com.lyw.tauren.network.stateCallback.ListDataUiState
 import com.lyw.tauren.ui.fragment.home.HomeFragment
 import com.lyw.tauren.ui.fragment.me.MeFragment
 import com.lyw.tauren.ui.fragment.project.ProjectFragment
@@ -35,23 +39,23 @@ import com.yanzhenjie.recyclerview.SwipeRecyclerView
  * 描述　:项目中自定义类的拓展函数
  */
 
-//
-//fun LoadService<*>.setErrorText(message: String) {
-//    if (message.isNotEmpty()) {
-//        this.setCallBack(ErrorCallback::class.java) { _, view ->
-//            view.findViewById<TextView>(R.id.error_text).text = message
-//        }
-//    }
-//}
-//
-///**
-// * 设置错误布局
-// * @param message 错误布局显示的提示内容
-// */
-//fun LoadService<*>.showError(message: String = "") {
-//    this.setErrorText(message)
-//    this.showCallback(ErrorCallback::class.java)
-//}
+
+fun LoadService<*>.setErrorText(message: String) {
+    if (message.isNotEmpty()) {
+        this.setCallBack(ErrorCallback::class.java) { _, view ->
+            view.findViewById<TextView>(R.id.error_text).text = message
+        }
+    }
+}
+
+/**
+ * 设置错误布局
+ * @param message 错误布局显示的提示内容
+ */
+fun LoadService<*>.showError(message: String = "") {
+    this.setErrorText(message)
+    this.showCallback(ErrorCallback::class.java)
+}
 
 /**
  * 设置空布局
@@ -380,43 +384,43 @@ fun hideSoftKeyboard(activity: Activity?) {
     }
 }
 
-///**
-// * 加载列表数据
-// */
-//fun <T> loadListData(
-//    data: ListDataUiState<T>,
-//    baseQuickAdapter: BaseQuickAdapter<T, *>,
-//    loadService: LoadService<*>,
-//    recyclerView: SwipeRecyclerView,
-//    swipeRefreshLayout: SwipeRefreshLayout
-//) {
-//    swipeRefreshLayout.isRefreshing = false
-//    recyclerView.loadMoreFinish(data.isEmpty, data.hasMore)
-//    if (data.isSuccess) {
-//        //成功
-//        when {
-//            //第一页并没有数据 显示空布局界面
-//            data.isFirstEmpty -> {
-//                loadService.showEmpty()
-//            }
-//            //是第一页
-//            data.isRefresh -> {
-//                baseQuickAdapter.setList(data.listData)
-//                loadService.showSuccess()
-//            }
-//            //不是第一页
-//            else -> {
-//                baseQuickAdapter.addData(data.listData)
-//                loadService.showSuccess()
-//            }
-//        }
-//    } else {
-//        //失败
-//        if (data.isRefresh) {
-//            //如果是第一页，则显示错误界面，并提示错误信息
-//            loadService.showError(data.errMessage)
-//        } else {
-//            recyclerView.loadMoreError(0, data.errMessage)
-//        }
-//    }
-//}
+/**
+ * 加载列表数据
+ */
+fun <T> loadListData(
+    data: ListDataUiState<T>,
+    baseQuickAdapter: BaseQuickAdapter<T, *>,
+    loadService: LoadService<*>,
+    recyclerView: SwipeRecyclerView,
+    swipeRefreshLayout: SwipeRefreshLayout
+) {
+    swipeRefreshLayout.isRefreshing = false
+    recyclerView.loadMoreFinish(data.isEmpty, data.hasMore)
+    if (data.isSuccess) {
+        //成功
+        when {
+            //第一页并没有数据 显示空布局界面
+            data.isFirstEmpty -> {
+                loadService.showEmpty()
+            }
+            //是第一页
+            data.isRefresh -> {
+                baseQuickAdapter.setList(data.listData)
+                loadService.showSuccess()
+            }
+            //不是第一页
+            else -> {
+                baseQuickAdapter.addData(data.listData)
+                loadService.showSuccess()
+            }
+        }
+    } else {
+        //失败
+        if (data.isRefresh) {
+            //如果是第一页，则显示错误界面，并提示错误信息
+            loadService.showError(data.errMessage)
+        } else {
+            recyclerView.loadMoreError(0, data.errMessage)
+        }
+    }
+}
