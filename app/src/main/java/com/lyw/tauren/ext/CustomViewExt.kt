@@ -30,6 +30,7 @@ import com.lyw.tauren.ui.fragment.me.MeFragment
 import com.lyw.tauren.ui.fragment.project.ProjectFragment
 import com.lyw.tauren.ui.fragment.publicNumber.PublicNumberFragment
 import com.lyw.tauren.ui.fragment.tree.TreeArrFragment
+import com.lyw.tauren.weight.customview.DefineLoadMoreView
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
 
 
@@ -107,25 +108,25 @@ fun SwipeRecyclerView.init(
     return this
 }
 
-//fun SwipeRecyclerView.initFooter(loadmoreListener: SwipeRecyclerView.LoadMoreListener): DefineLoadMoreView {
-//    val footerView = DefineLoadMoreView(appContext)
-//    //给尾部设置颜色
-//    footerView.setLoadViewColor(SettingUtil.getOneColorStateList(appContext))
-//    //设置尾部点击回调
-//    footerView.setmLoadMoreListener(SwipeRecyclerView.LoadMoreListener {
-//        footerView.onLoading()
-//        loadmoreListener.onLoadMore()
-//    })
-//    this.run {
-//        //添加加载更多尾部
-//        addFooterView(footerView)
-//        setLoadMoreView(footerView)
-//        //设置加载更多回调
-//        setLoadMoreListener(loadmoreListener)
-//    }
-//    return footerView
-//}
-//
+fun SwipeRecyclerView.initFooter(loadmoreListener: SwipeRecyclerView.LoadMoreListener): DefineLoadMoreView {
+    val footerView = DefineLoadMoreView(appContext)
+    //给尾部设置颜色
+    footerView.setLoadViewColor(SettingUtil.getOneColorStateList(appContext))
+    //设置尾部点击回调
+    footerView.setmLoadMoreListener(SwipeRecyclerView.LoadMoreListener {
+        footerView.onLoading()
+        loadmoreListener.onLoadMore()
+    })
+    this.run {
+        //添加加载更多尾部
+        addFooterView(footerView)
+        setLoadMoreView(footerView)
+        //设置加载更多回调
+        setLoadMoreListener(loadmoreListener)
+    }
+    return footerView
+}
+
 fun RecyclerView.initFloatBtn(floatbtn: FloatingActionButton) {
     //监听recyclerview滑动到顶部的时候，需要把向上返回顶部的按钮隐藏
     addOnScrollListener(object : RecyclerView.OnScrollListener() {

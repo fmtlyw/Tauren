@@ -1,5 +1,8 @@
 package com.lyw.tauren.network
 
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.google.gson.GsonBuilder
 import com.lyw.module_common_base.BaseApp.Companion.appContext
 import com.lyw.module_common_base.network.BaseNetworkApi
@@ -38,7 +41,7 @@ class NetworkApi : BaseNetworkApi(){
             //设置缓存配置 缓存最大10M
             cache(Cache(File(appContext.cacheDir, "cxk_cache"), 10 * 1024 * 1024))
             //添加Cookies自动持久化
-//            cookieJar(cookieJar)
+            cookieJar(cookieJar)
             //示例：添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息
             addInterceptor(MyHeadInterceptor())
             //添加缓存拦截器 可传入缓存天数，不传默认7天
@@ -63,7 +66,8 @@ class NetworkApi : BaseNetworkApi(){
         }
     }
 
-//    val cookieJar: PersistentCookieJar by lazy {
-//        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(appContext))
-//    }
+    //网络缓存，记住请求，避免重复多次调用网络接口
+    val cookieJar: PersistentCookieJar by lazy {
+        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(appContext))
+    }
 }

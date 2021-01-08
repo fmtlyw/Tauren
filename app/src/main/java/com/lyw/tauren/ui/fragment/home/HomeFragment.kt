@@ -1,6 +1,7 @@
 package com.lyw.tauren.ui.fragment.home
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -23,7 +24,9 @@ import com.lyw.tauren.viewmodel.state.HomeViewModel
 import com.lyw.tauren.weight.banner.HomeBannerAdapter
 import com.lyw.tauren.weight.banner.HomeBannerViewHolder
 import com.lyw.tauren.weight.recyclerview.SpaceItemDecoration
+import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import com.zhpan.bannerview.BannerViewPager
+import com.zhpan.bannerview.constants.IndicatorGravity
 import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
@@ -73,7 +76,11 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         //初始化recyclerView
         recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
             it.addItemDecoration(SpaceItemDecoration(0, ConvertUtils.dp2px(8f), false))
-
+            //添加底部布局，加载更多
+            it.initFooter(SwipeRecyclerView.LoadMoreListener {
+                requestHomeViewModel.getHomeData(false)
+            })
+            //初始化FloatingActionButton
             it.initFloatBtn(floatbtn)
         }
 
@@ -88,6 +95,12 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             //收藏点击
             //item点击
 
+
+            //备注：{}里面相当于接口回调要传的参数，->相当于回调的方法onItemClick(代码有自动提示)
+            setOnItemClickListener { adapter, view, position ->
+
+            }
+
         }
     }
 
@@ -95,22 +108,24 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         requestHomeViewModel.run {
             homeDataState.observe(viewLifecycleOwner, Observer {
                 //设值,用拓展函数
-                loadListData(it,articleAdapter,loadSir,recyclerView,swipeRefresh)
+                loadListData(it, articleAdapter, loadSir, recyclerView, swipeRefresh)
             })
             //监听轮播图请求的数据变化
             bannerData.observe(viewLifecycleOwner, Observer { resultState ->
                 parseState(resultState, { data ->
                     //请求轮播图数据成功，添加轮播图到headview ，如果等于0说明没有添加过头部，添加一个
                     if (recyclerView.headerCount == 0) {
-                        val headView = LayoutInflater.from(context).inflate(R.layout.include_banner, null)
+                        val headView =
+                            LayoutInflater.from(context).inflate(R.layout.include_banner, null)
                                 .apply {
                                     findViewById<BannerViewPager<BannerResponse, HomeBannerViewHolder>>(
                                         R.id.banner_view
                                     ).apply {
                                         adapter = HomeBannerAdapter()
-                                        setLifecycleRegistry(lifecycle)//为啥在这设置
+                                        setLifecycleRegistry(lifecycle)//备注：使用setLifecycleRegistry(getLifecycle())用于监听页面生命周期，在页面停止或者销毁时停止轮播
+                                        setIndicatorGravity(IndicatorGravity.END)
                                         setOnPageClickListener {
-//                                    nav().navigateAction()
+
 
                                         }
                                         create(data)

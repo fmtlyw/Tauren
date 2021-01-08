@@ -85,4 +85,6 @@ dependencies {
     api rootProject.ext.dependencies["retrofit-url-manager"]
     //BannerViewPager
     api rootProject.ext.dependencies["BannerViewPager"]
+    //PersistentCookieJar
+    api rootProject.ext.dependencies["PersistentCookieJar"]
 }
