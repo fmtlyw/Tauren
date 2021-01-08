@@ -2,6 +2,7 @@ package com.lyw.module_common_base.view.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.lyw.module_common_base.ext.loge
 import com.lyw.module_common_base.network.*
 import com.lyw.module_common_base.view.activity.BaseVmActivity
 import com.lyw.module_common_base.view.fragment.BaseVmFragment
@@ -159,7 +160,7 @@ fun <T> BaseViewModel.request(
                 }
             }.onFailure { e ->
                 //打印错误消息
-//                e.message?.loge()
+                e.message?.loge()
                 //失败回调
                 error(ExceptionHandle.handleException(e))
             }
@@ -167,7 +168,7 @@ fun <T> BaseViewModel.request(
             //网络请求异常 关闭弹窗
             loadingChange.dismissDialog.postValue(false)
             //打印错误消息
-//            it.message?.loge()
+            it.message?.loge()
             //失败回调
             error(ExceptionHandle.handleException(it))
         }
