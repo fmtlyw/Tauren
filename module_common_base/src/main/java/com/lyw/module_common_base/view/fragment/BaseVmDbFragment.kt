@@ -29,4 +29,18 @@ abstract class BaseVmDbFragment<VM : BaseViewModel,DB : ViewDataBinding> : BaseV
         return mDatabind.root
     }
 
+    /**
+     * 打开等待框
+     */
+    override fun showLoading(message: String) {
+//        showLoadingExt(message)
+    }
+
+    /**
+     * 关闭等待框
+     */
+    override fun dismissLoading() {
+//        dismissLoadingExt()
+    }
+
 }

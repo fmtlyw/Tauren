@@ -21,12 +21,4 @@ class SearchFragment :BaseFragment<SearchViewModel,FragmentSearchBinding>(){
     }
     override fun lazyLoadData() {
     }
-
-    override fun showLoading(message: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun dismissLoading() {
-        TODO("Not yet implemented")
-    }
 }

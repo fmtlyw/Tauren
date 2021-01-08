@@ -134,11 +134,4 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         //请求轮播图数据
         requestHomeViewModel.getBannerData()
     }
-
-    override fun showLoading(message: String) {
-
-    }
-
-    override fun dismissLoading() {
-    }
 }
