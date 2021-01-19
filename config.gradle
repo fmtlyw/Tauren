@@ -112,5 +112,6 @@ ext {
             //动态替换BaseUrl库 使用可参考 https://github.com/JessYanCoding/RetrofitUrlManager
              "retrofit-url-manager"        : "me.jessyan:retrofit-url-manager:1.4.0",
              "BannerViewPager"             : "com.github.zhpanvip:BannerViewPager:3.1.5",
+             "tastytoast"                   : "com.sdsmdg.tastytoast:tastytoast:0.1.1",
     ]
 }

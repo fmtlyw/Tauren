@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/module_biadu_map" />
             <option value="$PROJECT_DIR$/module_common_base" />
+            <option value="$PROJECT_DIR$/module_http" />
             <option value="$PROJECT_DIR$/module_pay" />
             <option value="$PROJECT_DIR$/module_player" />
           </set>

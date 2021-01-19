@@ -2,7 +2,26 @@
     <string name="app_name">Tauren</string>
     <string name="menu_home">首页</string>
     <string name="menu_project">项目</string>
-    <string name="menu_tree">广场</string>
+    <string name="menu_tree">发现</string>
     <string name="menu_public">公众号</string>
     <string name="menu_me">我的</string>
+
+
+    <string name="discover_follow">关注</string>
+    <string name="discover_category">分类</string>
+    <string name="discover_topic">专题</string>
+    <string name="discover_news">资讯</string>
+    <string name="discover_fresh_news">新鲜资讯</string>
+    <string name="discover_publish">发布：</string>
+    <string name="discover_collect">收藏</string>
+    <string-array name="discover_titles">
+        <item>@string/discover_follow</item>
+        <item>@string/discover_category</item>
+        <item>@string/discover_topic</item>
+        <item>@string/discover_news</item>
+    </string-array>
+
+    <string name="discover_add_follow">+ 关注</string>
+    <string name="share_image">share_image</string>
+    <string name="shared_element_container">shared_element_container</string>
 </resources>

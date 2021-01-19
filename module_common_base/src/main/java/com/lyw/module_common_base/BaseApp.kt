@@ -10,6 +10,7 @@ import com.kingja.loadsir.core.LoadSir
 import com.lyw.module_common_base.callback.loadCallBack.EmptyCallback
 import com.lyw.module_common_base.callback.loadCallBack.ErrorCallback
 import com.lyw.module_common_base.callback.loadCallBack.LoadingCallback
+import com.lyw.module_http.Configurator
 import com.tencent.mmkv.MMKV
 
 /**
@@ -44,6 +45,10 @@ open class BaseApp : Application(), ViewModelStoreOwner {
             .addCallback(EmptyCallback())//空
             .setDefaultCallback(SuccessCallback::class.java)//设置默认加载状态页
             .commit()
+
+
+        //初始化获取视频api baseurl
+        Configurator.instance.withWebApiHost("http://baobab.kaiyanapp.com/api/").configure()
     }
 
     override fun getViewModelStore(): ViewModelStore {

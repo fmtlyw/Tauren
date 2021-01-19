@@ -5,6 +5,7 @@ if (Boolean.valueOf(rootProject.ext.isModule)) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.ext.versions.compileSdkVersion
     buildToolsVersion rootProject.ext.versions.buildToolsVersion
@@ -36,8 +37,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.3.0'
@@ -87,4 +86,10 @@ dependencies {
     api rootProject.ext.dependencies["BannerViewPager"]
     //PersistentCookieJar
     api rootProject.ext.dependencies["PersistentCookieJar"]
+    //android.material
+    api rootProject.ext.androidx["android.material"]
+    //androidx.swiperefreshlayout
+    api rootProject.ext.androidx["androidx.swiperefreshlayout"]
+    //tastytoast
+    api rootProject.ext.dependencies["tastytoast"]
 }

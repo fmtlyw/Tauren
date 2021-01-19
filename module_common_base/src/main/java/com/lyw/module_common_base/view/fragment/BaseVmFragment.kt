@@ -2,15 +2,21 @@ package com.lyw.module_common_base.view.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.lyw.module_common_base.ext.errorToast
 import com.lyw.module_common_base.ext.getVmClazz
 import com.lyw.module_common_base.view.viewmodel.BaseViewModel
+import com.lyw.module_common_base.view.viewmodel.ErrorState
+import com.lyw.module_common_base.view.viewmodel.LoadState
+import com.lyw.module_common_base.view.viewmodel.SuccessState
 
 /**
  * 功能描述:ViewModelFragment基类，自动把ViewModel注入Fragment
@@ -48,6 +54,27 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         initView(savedInstanceState)
         createObserver()
         initData()
+
+        initViewModel()
+    }
+
+    private fun initViewModel() {
+        mViewModel.mStateLiveData.observe(viewLifecycleOwner, Observer {state ->
+            when (state) {
+                LoadState -> {
+                    showLoading()
+                }
+                SuccessState -> {
+                    hideLoading()
+                }
+                is ErrorState -> {
+                    hideLoading()
+                    state.errorMsg?.let { errorToast(it) }
+                    handlerError()
+                    Log.d("lyw","initViewModel--错误信息----》" + state.errorMsg)
+                }
+            }
+        })
     }
 
     /**
@@ -91,7 +118,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
             view?.post {
                 lazyLoadData()
 
-
+                isFirst = false
             }
         }
     }
@@ -100,4 +127,19 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      * 懒加载
      */
     abstract fun lazyLoadData()
+
+
+
+    //由于每个页面的加载框可能不一致，所以此处暴露给子类实现
+    open fun showLoading() {
+
+    }
+
+    open fun hideLoading() {
+
+    }
+
+    open fun handlerError() {
+
+    }
 }
