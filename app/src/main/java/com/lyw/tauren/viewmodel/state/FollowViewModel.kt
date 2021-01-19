@@ -10,9 +10,7 @@ import com.lyw.tauren.ui.fragment.tree.service.DiscoverService
  */
 class FollowViewModel : CommonListViewModel() {
     override suspend fun <M> getRefreshList(): List<M> {
-        Log.d("lyw","getRefreshList前")
         val followList = DiscoverService.getFollowList()
-        Log.d("lyw","getRefreshList---》"+followList)
         mNextPageUrl = followList.nextPageUrl
         return followList.itemList as List<M>
     }

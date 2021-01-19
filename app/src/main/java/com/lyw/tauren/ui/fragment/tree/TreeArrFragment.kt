@@ -22,7 +22,7 @@ class TreeArrFragment : BaseFragment<TreeArrViewModel, FragmentTreeArrBinding>()
         mutableListOf<Fragment>().apply {
             add(FollowFragment())
             add(FollowFragment())
-            add(FollowFragment())
+            add(TopicFragment())
             add(FollowFragment())
         }
     }

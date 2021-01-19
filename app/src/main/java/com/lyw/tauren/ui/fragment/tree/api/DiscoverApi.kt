@@ -1,5 +1,6 @@
 package com.lyw.tauren.ui.fragment.tree.api
 import com.lyw.tauren.data.model.been.Issue
+import com.lyw.tauren.data.model.been.TopicModel
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Url
@@ -15,11 +16,11 @@ interface DiscoverApi {
     @GET
     suspend fun getCategoryDetailList(@Url url: String): Issue
 
-//    @GET("v3/specialTopics")
-//    suspend fun getTopicList(): TopicModel
-//
-//    @GET
-//    suspend fun getTopicList(@Url url: String): TopicModel
+    @GET("v3/specialTopics")
+    suspend fun getTopicList(): TopicModel
+
+    @GET
+    suspend fun getTopicList(@Url url: String): TopicModel
 //
 //    @GET("v3/lightTopics/internal/{id}")
 //    suspend fun getTopicDetail(@Path("id") id: Int): TopicDetailModel
