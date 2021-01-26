@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.lyw.module_common_base.view.fragment.BaseVmFragment
 import com.lyw.tauren.R
+import com.lyw.tauren.ext.initFloatBtn
 import com.lyw.tauren.viewmodel.state.CommonListViewModel
 import kotlinx.android.synthetic.main.fragment_discover_common_refresh.*
 
@@ -42,7 +43,7 @@ abstract class CommonListFragment<VM : CommonListViewModel, M> : BaseVmFragment<
             getListData()
         }
         mRecyclerView.adapter = mAdapter
-
+        mRecyclerView.initFloatBtn(floatbtn)
     }
 
     private fun getListData(firstPage: Boolean = false) {

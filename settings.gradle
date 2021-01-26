@@ -1,2 +1,2 @@
-include ':app', ':module_biadu_map', ':module_pay', ':module_common_base', ':module_player', ':module_http'
+include ':app', ':module_biadu_map', ':module_pay', ':module_common_base', ':module_player', ':module_http', ':module_provider'
 rootProject.name='Tauren'

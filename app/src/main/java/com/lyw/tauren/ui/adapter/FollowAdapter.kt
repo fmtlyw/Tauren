@@ -9,8 +9,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.lyw.module_provider.model.Item
+import com.lyw.module_provider.router.go2VideoPlayerActivity
 import com.lyw.tauren.R
-import com.lyw.tauren.data.model.been.Item
 import com.lyw.tauren.databinding.ItemDiscoverFollowBinding
 import com.lyw.tauren.databinding.ItemDiscoverWorksBinding
 
@@ -24,9 +25,9 @@ class FollowAdapter(private val mActivity: Activity) :
     override fun convert(holder: BaseViewHolder, item: Item) {
         val bindingHolder =
             BaseDataBindingHolder<ItemDiscoverFollowBinding>(holder.itemView)
-        bindingHolder.dataBinding?.let {
-            it.model = item
-            it.activity = mActivity
+        bindingHolder.dataBinding?.run {
+            model = item
+            activity = mActivity
         }
     }
 
@@ -35,14 +36,12 @@ class FollowAdapter(private val mActivity: Activity) :
 
         override fun convert(holder: BaseViewHolder, item: Item) {
             val bindingHolder = BaseDataBindingHolder<ItemDiscoverWorksBinding>(holder.itemView)
-            bindingHolder.dataBinding?.model = item
-//            bindingHolder.dataBinding?.ivCover?.setOnClickListener {
-//                go2VideoPlayerActivity(
-//                    activity,
-//                    it,
-//                    item.data
-//                )
-//            }
+            bindingHolder.dataBinding?.let {
+                it.model = item
+                it.ivCover?.setOnClickListener {
+                    go2VideoPlayerActivity(activity,it,item.data)
+                }
+            }
             if (data.indexOf(item) == data.size - 1) {
                 bindingHolder.dataBinding?.llCover?.setPadding(dp2px(15f), 0, dp2px(15f), 0)
             }

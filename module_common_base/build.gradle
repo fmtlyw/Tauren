@@ -6,6 +6,13 @@ if (Boolean.valueOf(rootProject.ext.isModule)) {
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 android {
     compileSdkVersion rootProject.ext.versions.compileSdkVersion
     buildToolsVersion rootProject.ext.versions.buildToolsVersion
@@ -92,4 +99,10 @@ dependencies {
     api rootProject.ext.androidx["androidx.swiperefreshlayout"]
     //tastytoast
     api rootProject.ext.dependencies["tastytoast"]
+    //arouter-api
+    api rootProject.ext.dependencies["arouter-api"]
+    //jiaozivideoplayer
+    api rootProject.ext.dependencies["jiaozivideoplayer"]
+    api rootProject.ext.dependencies["immersionbar"]
+    api rootProject.ext.dependencies["immersionbar-ktx"]
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.multidex.MultiDex
+import com.alibaba.android.arouter.launcher.ARouter
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
 import com.lyw.module_common_base.callback.loadCallBack.EmptyCallback
@@ -49,6 +50,8 @@ open class BaseApp : Application(), ViewModelStoreOwner {
 
         //初始化获取视频api baseurl
         Configurator.instance.withWebApiHost("http://baobab.kaiyanapp.com/api/").configure()
+
+        ARouter.init(this)
     }
 
     override fun getViewModelStore(): ViewModelStore {

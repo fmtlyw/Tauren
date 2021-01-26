@@ -9,7 +9,7 @@
 
         <variable
             name="model"
-            type="com.lyw.tauren.data.model.been.Item" />
+            type="com.lyw.module_provider.model.Item" />
     </data>
 
     <LinearLayout

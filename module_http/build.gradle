@@ -1,34 +1,5 @@
-if (Boolean.valueOf(rootProject.ext.isModule)) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply from: "../common.module.config.gradle"
+
 android {
-    compileSdkVersion rootProject.ext.versions.compileSdkVersion
-    buildToolsVersion rootProject.ext.versions.buildToolsVersion
-
-
-    defaultConfig {
-        minSdkVersion rootProject.ext.versions.minSdkVersion
-        targetSdkVersion rootProject.ext.versions.targetSdkVersion
-        versionCode rootProject.ext.versions.versionCode
-        versionName rootProject.ext.versions.versionName
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
-
-dependencies {
-    implementation project(':module_common_base')
+    resourcePrefix "http_"
 }

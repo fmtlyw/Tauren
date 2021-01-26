@@ -1,2 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lyw.module_player" />
+    package="com.lyw.module_player" >
+
+    <application>
+        <activity android:name=".activity.VideoPlayerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransparentWindow"/>
+    </application>
+</manifest>

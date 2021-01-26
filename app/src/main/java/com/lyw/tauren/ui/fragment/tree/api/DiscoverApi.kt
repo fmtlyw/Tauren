@@ -1,5 +1,5 @@
 package com.lyw.tauren.ui.fragment.tree.api
-import com.lyw.tauren.data.model.been.Issue
+import com.lyw.module_provider.model.Issue
 import com.lyw.tauren.data.model.been.TopicModel
 import retrofit2.http.GET
 import retrofit2.http.Path

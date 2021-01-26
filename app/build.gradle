@@ -47,6 +47,8 @@ dependencies {
     //公用依赖包
     implementation project(':module_common_base')
     implementation project(':module_http')
+    implementation project(':module_provider')
+    implementation project(':module_player')
     if (!Boolean.valueOf(rootProject.ext.isModule)) {
         //main模块
 //        implementation project(':module_main')

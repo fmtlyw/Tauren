@@ -27,7 +27,8 @@
             android:src="@mipmap/fab_up"
             android:visibility="invisible"
             app:elevation="5dp"
-            app:fabSize="mini"/>
+            app:fabSize="mini"
+            app:layout_behavior="com.lyw.tauren.weight.recyclerview.FatScrollAwareFABBehavior"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
