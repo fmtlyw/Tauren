@@ -105,4 +105,10 @@ dependencies {
     api rootProject.ext.dependencies["jiaozivideoplayer"]
     api rootProject.ext.dependencies["immersionbar"]
     api rootProject.ext.dependencies["immersionbar-ktx"]
+    //dialog
+    api rootProject.ext.dependencies["dialogs:lifecycle"]
+    api rootProject.ext.dependencies["dialogs:core"]
+    api rootProject.ext.dependencies["dialogs:color"]
+    api rootProject.ext.dependencies["dialogs:datetime"]
+    api rootProject.ext.dependencies["dialogs:bottomsheets"]
 }
